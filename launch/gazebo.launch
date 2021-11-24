@@ -1,7 +1,7 @@
 <launch>
-    <param name="robot_description" textfile="$(find HLRobot_gazebo)/urdf/robot.urdf" />
+    <param name="robot_description" textfile="$(find hlrobot_gazebo)/urdf/robot.urdf" />
     <!-- loads the controllers -->
-    <rosparam file="$(find HLRobot_gazebo)/config/control.yaml" command="load" />
+    <rosparam file="$(find hlrobot_gazebo)/config/control.yaml" command="load" />
     <node name="controller_spawner" pkg="controller_manager" type="spawner" args="HL_controller joint_state_controller"/>
     <!-- converts joint states to TF transforms -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
