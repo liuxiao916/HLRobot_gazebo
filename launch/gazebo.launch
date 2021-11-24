@@ -1,5 +1,5 @@
 <launch>
-    <param name="robot_description" textfile="$(find hlrobot_gazebo)/urdf/robot.urdf" />
+    <param name="robot_description" textfile="$(find hlrobot_gazebo)/urdf/robot.xacro" />
     <!-- loads the controllers -->
     <rosparam file="$(find hlrobot_gazebo)/config/control.yaml" command="load" />
     <node name="controller_spawner" pkg="controller_manager" type="spawner" args="HL_controller joint_state_controller"/>
