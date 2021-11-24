@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="HLRobot">
+    <link name="base_footprint">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <sphere radius="0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <sphere radius="0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.000405214557039469 0.00397651461292238 0.169839806497255" rpy="0 0 0" />
+            <mass value="500" />
+            <inertia ixx="0.10581489524942" ixy="0.000527121157082633" ixz="-7.56911148408879E-05" iyy="0.107337475091701" iyz="-0.00154168528325628" izz="0.101543534070196" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/base_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.52156862745098 0.541176470588235 0.541176470588235 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="base_footprint2base_link" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <axis xyz="0 0 -1" />
+    </joint>
+    <link name="link1">
+        <inertial>
+            <origin xyz="0.00618991955563981 0.000434449692377808 0.108490578152082" rpy="0 0 0" />
+            <mass value="5.86522389328675" />
+            <inertia ixx="0.0701296431279813" ixy="2.32003557486133E-05" ixz="0.000929023712430576" iyy="0.0469454868222595" iyz="-0.000290037040115787" izz="0.0473187424882217" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link1.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link1.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint1" type="continuous">
+        <origin xyz="-0.00013435849002087 0.0245001355111561 0.297" rpy="0 0 1.5707963267949" />
+        <parent link="base_link" />
+        <child link="link1" />
+        <axis xyz="0 0 -1" />
+    </joint>
+    <link name="link2">
+        <inertial>
+            <origin xyz="-0.0129472421061704 0.195085111512339 -7.49961324365638E-05" rpy="0 0 0" />
+            <mass value="10.1072258905016" />
+            <inertia ixx="0.263256183053944" ixy="0.00386135478561168" ixz="5.61953803517995E-08" iyy="0.0517012507195787" iyz="-2.05241533594351E-05" izz="0.242545433984185" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link2.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link2.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint2" type="continuous">
+        <origin xyz="0 9.99999999976693E-05 0.189139439157728" rpy="1.5707963267949 0 0" />
+        <parent link="link1" />
+        <child link="link2" />
+        <axis xyz="0 0 -1" />
+    </joint>
+    <link name="link3">
+        <inertial>
+            <origin xyz="-0.000108844845618653 -0.0139358636724003 -0.000142913039055006" rpy="0 0 0" />
+            <mass value="2.65740566873148" />
+            <inertia ixx="0.00886183268521179" ixy="1.37642190281603E-05" ixz="1.284656785324E-08" iyy="0.00678736358244395" iyz="5.73796796321141E-06" izz="0.00937006388060566" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link3.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link3.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint3" type="continuous">
+        <origin xyz="0 0.451860592710981 -0.000100000000000028" rpy="0 0 0" />
+        <parent link="link2" />
+        <child link="link3" />
+        <axis xyz="0 0 -1" />
+    </joint>
+    <link name="link4">
+        <inertial>
+            <origin xyz="-8.86388330648964E-05 -8.21928935558796E-05 0.18467124485822" rpy="0 0 0" />
+            <mass value="4.34532297508078" />
+            <inertia ixx="0.0474113957336292" ixy="4.2127603467986E-08" ixz="-5.26635457332329E-05" iyy="0.0448119152975099" iyz="6.59212483096878E-05" izz="0.00958455134527702" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link4.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link4.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint4" type="continuous">
+        <origin xyz="0 0.0799999999999998 0" rpy="-1.5707963267949 0 0" />
+        <parent link="link3" />
+        <child link="link4" />
+        <axis xyz="0 0 -1" />
+    </joint>
+    <link name="link5">
+        <inertial>
+            <origin xyz="-9.01966818289611E-09 0.0150673345014429 0.000970287859869526" rpy="0 0 0" />
+            <mass value="0.486634760640137" />
+            <inertia ixx="0.000670946201229993" ixy="-1.02766841457603E-10" ixz="-6.73537980241108E-10" iyy="0.000391738154780886" iyz="1.16937873469867E-05" izz="0.000627437195953237" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link5.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link5.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint5" type="continuous">
+        <origin xyz="0 0 0.370000000000001" rpy="1.5707963267949 0 0" />
+        <parent link="link4" />
+        <child link="link5" />
+        <axis xyz="0 0 -1" />
+    </joint>
+    <link name="link6">
+        <inertial>
+            <origin xyz="0.000182837342452855 0.000101096543022138 0.00313183222146129" rpy="0 0 0" />
+            <mass value="0.00778582634380437" />
+            <inertia ixx="9.19779718042607E-07" ixy="-1.27003710700796E-08" ixz="-1.52057934315707E-09" iyy="9.08150760544638E-07" iyz="-4.13772433755291E-10" izz="1.77182633837523E-06" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link6.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/meshes/link6.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint6" type="continuous">
+        <origin xyz="0 0.0772999999999984 0" rpy="1.5707963267949 1.5707963267949 0" />
+        <parent link="link5" />
+        <child link="link6" />
+        <axis xyz="0 0 -1" />
+    </joint>
+
+
+    <!-- transmission -->
+    <transmission name="joint1_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor1">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- transmission -->
+    <transmission name="join2_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint2">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor2">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- transmission -->
+    <transmission name="joint3_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint3">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor3">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- transmission -->
+    <transmission name="joint4_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint4">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor4">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- transmission -->
+    <transmission name="joint5_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint5">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor5">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="joint6_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint6">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor6">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!-- ROS Control plugin for Gazebo -->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+    </gazebo>
+
+</robot>

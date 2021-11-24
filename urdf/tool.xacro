@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="HLRobot">
+
+    <link name="tool1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.01" length ="0.2"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <sphere radius="0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="link62tool1" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="link6" />
+        <child link="tool1" />
+        <axis xyz="0 0 0" />
+    </joint>
+</robot>
