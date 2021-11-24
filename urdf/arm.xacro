@@ -41,7 +41,6 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
         <parent link="base_footprint" />
         <child link="base_link" />
-        <axis xyz="0 0 -1" />
     </joint>
     <link name="link1">
         <inertial>
@@ -298,7 +297,6 @@
         <origin xyz="-0.1 0 -0.005" rpy="1.50707 0 1.50707" />
         <parent link="link6" />
         <child link="tool1" />
-        <axis xyz="0 0 0" />
     </joint>
 
     <link name="tool2">
@@ -320,7 +318,6 @@
         <origin xyz="0 0 -0.1" rpy="0 0 0" />
         <parent link="tool1" />
         <child link="tool2" />
-        <axis xyz="0 0 0" />
     </joint>
 
 </robot>
