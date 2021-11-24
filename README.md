@@ -5,6 +5,7 @@ A simulation for QKM HL6-0900 6DOF robot based on gazebo
 ```bash
 sudo apt-get install ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-hector-gazebo-plugins
 
+sudo apt-get install ros-melodic-sound-play
 cd catkin_ws/src
 git clone https://github.com/liuxiao916/HLRobot_gazebo.git
 cd catkin_ws/
@@ -35,6 +36,8 @@ data: [1.1, 2.1, 1.2, 2.3, 1.2, 3.1]"
 ## Load and play
 Edit the path of txt file in `scripts/publisher.py `
 ```bash
+rosrun sound_play soundplay_node.py
+rosrun sound_play play.py
 rosrun hlrobot_gazebo publisher.py 
 ```
 

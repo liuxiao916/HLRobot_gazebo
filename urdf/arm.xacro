@@ -38,7 +38,7 @@
         </collision>
     </link>
     <joint name="base_footprint2base_link" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="-0.03 0 0" rpy="0 0 -1.5707" />
         <parent link="base_footprint" />
         <child link="base_link" />
     </joint>
@@ -68,7 +68,7 @@
         <origin xyz="-0.00013435849002087 0.0245001355111561 0.297" rpy="0 0 1.5707963267949" />
         <parent link="base_link" />
         <child link="link1" />
-        <axis xyz="0 0 -1" />
+        <axis xyz="0 0 1" />
     </joint>
     <link name="link2">
         <inertial>
@@ -152,7 +152,7 @@
         <origin xyz="0 0.0799999999999998 0" rpy="-1.5707963267949 0 0" />
         <parent link="link3" />
         <child link="link4" />
-        <axis xyz="0 0 -1" />
+        <axis xyz="0 0 1" />
     </joint>
     <link name="link5">
         <inertial>
