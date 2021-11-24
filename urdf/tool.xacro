@@ -18,7 +18,7 @@
     </link>
 
     <joint name="link62tool1" type="fixed">
-        <origin xyz="-0.1 0 -0.005" rpy="1.50707 0 1.50707" />
+        <origin xyz="0.1 0 -0.005" rpy="1.50707 0 -1.50707" />
         <parent link="link6" />
         <child link="tool1" />
     </joint>
