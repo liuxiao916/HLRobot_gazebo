@@ -10,7 +10,6 @@
     <!-- 在 gazebo 中显示机器人模型 -->
     <node pkg="gazebo_ros" type="spawn_model" name="model" args="-urdf -model HLRobot -param robot_description" />
 
-    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find hlrobot_gazebo)/rviz/urdf.rviz" />
 
 
