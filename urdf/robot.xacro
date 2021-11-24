@@ -3,6 +3,5 @@
 
     <xacro:include filename="/home/liuxiao/catkin_ws/src/HLRobot_gazebo/urdf/arm.xacro" />
     <!-- <xacro:include filename="tool.xacro" /> -->
-
 </robot>
 

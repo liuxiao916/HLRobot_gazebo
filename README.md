@@ -32,8 +32,14 @@ data: [1.1, 2.1, 1.2, 2.3, 1.2, 3.1]"
 
 ```
 
+## Load and play
+Edit the path of txt file in `scripts/publisher.py `
+```bash
+rosrun hlrobot_gazebo publisher.py 
+```
+
 ## Todo
-- [ ] load angle of joints from txt file to control the robot
+- [x] load angle of joints from txt file to control the robot
 - [ ] Implement the forward and inverse kinematics in this simulation
 - [ ] Implement Motion Planning (Linear Function with Parabolic Blends) 
 - [ ] Simply control the robot by giving Cartesian coordinate
