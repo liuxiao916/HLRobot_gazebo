@@ -1,0 +1,17 @@
+<launch>
+    <param name="robot_description" textfile="$(find HLRobot_gazebo)/urdf/robot.urdf" />
+    <!-- loads the controllers -->
+    <rosparam file="$(find HLRobot_gazebo)/config/control.yaml" command="load" />
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" args="HL_controller joint_state_controller"/>
+    <!-- converts joint states to TF transforms -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+        <remap from="/joint_states" to="/simple_model/joint_states" />
+    </node>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+    <!-- 在 gazebo 中显示机器人模型 -->
+    <node pkg="gazebo_ros" type="spawn_model" name="model" args="-urdf -model HLRobot -param robot_description" />
+
+
+
+</launch>
