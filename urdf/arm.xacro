@@ -277,47 +277,4 @@
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
     </gazebo>
 
-    <!-- Tools -->
-    <link name="tool1">
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <cylinder radius="0.005" length ="0.2"/>
-            </geometry>
-        </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <sphere radius="0.001"/>
-            </geometry>
-        </collision>
-    </link>
-
-    <joint name="link62tool1" type="fixed">
-        <origin xyz="-0.1 0 -0.005" rpy="1.50707 0 1.50707" />
-        <parent link="link6" />
-        <child link="tool1" />
-    </joint>
-
-    <link name="tool2">
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <sphere radius="0.02" />
-            </geometry>
-        </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <sphere radius="0.02"/>
-            </geometry>
-        </collision>
-    </link>
-
-    <joint name="tool12tool2" type="fixed">
-        <origin xyz="0 0 -0.1" rpy="0 0 0" />
-        <parent link="tool1" />
-        <child link="tool2" />
-    </joint>
-
 </robot>

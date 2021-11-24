@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="HLRobot">
 
-    <xacro:include filename="/home/liuxiao/catkin_ws/src/HLRobot_gazebo/urdf/arm.xacro" />
-    <!-- <xacro:include filename="tool.xacro" /> -->
+    <xacro:include filename="arm.xacro" />
+    <xacro:include filename="tool.xacro" />
+
 </robot>
 
