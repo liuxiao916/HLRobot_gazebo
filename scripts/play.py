@@ -15,6 +15,22 @@ sound_G = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/dat
 sound_A = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/La.wav')
 sound_B = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/Si.wav')
 
+sound_1 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/1.wav')
+sound_2 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/2.wav')
+sound_3 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/3.wav')
+sound_4 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/4.wav')
+sound_5 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/5.wav')
+sound_6 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/6.wav')
+sound_7 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/7.wav')
+sound_8 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/8.wav')
+sound_9 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/9.wav')
+sound_10 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/10.wav')
+sound_11 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/11.wav')
+sound_12 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/12.wav')
+sound_13 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/13.wav')
+sound_14 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/14.wav')
+sound_15 = sound_client.waveSound('/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/15.wav')
+
 threshold = 0.02
 q_down = np.array([-20.5356, 32.5688, 97.2993, -15.9786, 75.987, 266.835,\
                     -17.6588, 31.5739, 98.986, -14.6972, 75.9011, 269.207,\
@@ -43,35 +59,35 @@ def callback(data):
         index = np.argmin(diff)
         print(index)
         if(index == 0):
-            sound_G.play()
+            sound_1.play()
         elif(index == 1):
-            sound_A.play()
+            sound_2.play()
         elif(index == 2):
-            sound_B.play()
+            sound_3.play()
         elif(index == 3):
-            sound_C.play()
+            sound_4.play()
         elif(index == 4):
-            sound_D.play()
+            sound_5.play()
         elif(index == 5):
-            sound_E.play()
+            sound_6.play()
         elif(index == 6):
-            sound_F.play()
+            sound_7.play()
         elif(index == 7):
-            sound_G.play()
+            sound_8.play()
         elif(index == 8):
-            sound_A.play()
+            sound_9.play()
         elif(index == 9):
-            sound_B.play()
+            sound_10.play()
         elif(index == 10):
-            sound_C.play()
+            sound_11.play()
         elif(index == 11):
-            sound_D.play()
+            sound_12.play()
         elif(index == 12):
-            sound_E.play()
+            sound_13.play()
         elif(index == 13):
-            sound_F.play()
-        elif(index == 15):
-            sound_G.play()
+            sound_14.play()
+        elif(index == 14):
+            sound_15.play()
         rospy.sleep(0.5)
         
 

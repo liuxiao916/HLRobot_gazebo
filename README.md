@@ -43,7 +43,7 @@ rosrun hlrobot_gazebo publisher.py
 
 ## Todo
 - [x] load angle of joints from txt file to control the robot
-- [ ] Try to play music by simulation
+- [x] Try to play music by simulation
 - [ ] Implement the forward and inverse kinematics in this simulation
 - [ ] Implement Motion Planning (Linear Function with Parabolic Blends) 
 - [ ] Simply control the robot by giving Cartesian coordinate
