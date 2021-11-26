@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <eigen3/Eigen/Dense>
 #include "HLrobotconfig.h"
 #include <vector>
@@ -15,6 +16,7 @@ typedef Matrix<double, 6, 1> Vector6d;
 class motionPlan
 {
 public:
+
 	motionPlan();
 	~motionPlan(){}
 	
@@ -28,6 +30,9 @@ public:
 
 	void playSong(const vector<int>& note, const vector<double>& interval,
 		const vector<double>& volume, string ppb);
+
+    Vector6d  minusPitchAngle(double dth, const Vector6d& po);
+
 
 
 

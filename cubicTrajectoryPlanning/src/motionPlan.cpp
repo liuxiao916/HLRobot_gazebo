@@ -2,16 +2,16 @@
 
 motionPlan::motionPlan()
 {
-	up << -106.989, 169.099, -9.553;
-	down << -167.586, 150.59, -67.681;
-	low << 510.0, -215.0, 508.6;
-	high << 510.0, 218.303, 508.6;
-
-	p_up.resize(num);
+  // 165 153 -99
+	up << 154.434, 167.177, -109.327;
+	down << 165.47, 151.645, -98.897;
+	low << 464.5, -215.887, 542.236;
+	high << 486.5, 216.373, 542.236;
+	/*p_up.resize(num);
 	p_down.resize(num);
 	q_up.resize(num);
 	q_down.resize(num);
-	Jvec.resize(num);
+	Jvec.resize(num);*/
 }
 
 void motionPlan::init_pos(string root, string p_up_fn, string p_down_fn, string q_up_fn, string q_down_fn, string Jfn)
@@ -31,14 +31,14 @@ void motionPlan::init_pos(string root, string p_up_fn, string p_down_fn, string 
 		double w = 1.0 * i / (num - 1);
 		tmp.head<3>() = low + w * (high - low);
 		tmp.tail<3>() = up;
-		p_up[i] = tmp;
+		p_up.push_back(tmp);
 		p_up_file << tmp.transpose() << endl;
-		q_up[i] = HLRobot::eigenGetJoints(tmp);
+		q_up.push_back(HLRobot::eigenGetJoints(tmp));
 		q_up_file << q_up[i].transpose() << endl;
 		tmp.tail<3>() = down;
-		p_down[i] = tmp;
+		p_down.push_back(tmp);
 		p_down_file << tmp.transpose() << endl;
-		q_down[i] = HLRobot::eigenGetJoints(tmp);
+		q_down.push_back(HLRobot::eigenGetJoints(tmp));
 		q_down_file << q_down[i].transpose() << endl;
 
 		Matrix6d J = getJacobian(q_down[i]);
@@ -64,7 +64,10 @@ void motionPlan::loadConfig(string root, string p_up_fn, string p_down_fn, strin
 	ifstream q_down_file(root + q_down_fn);
 	ifstream jacobian_file(root + Jfn);
 
-	auto readLine = [](ifstream& inf, int num) -> Vector6d {
+    //if (jacobian_file.is_open()) cout << "good" << endl;
+    //else    cout << "failed" << endl;
+
+    auto readLine = [](ifstream& inf, int num) -> Vector6d {
 		Vector6d res;
 		for (int i = 0; i < num; i++)	inf >> res(i);
 		return res;
@@ -73,13 +76,13 @@ void motionPlan::loadConfig(string root, string p_up_fn, string p_down_fn, strin
 	{
 		Vector6d tmp;
 		tmp = readLine(p_up_file, 6);
-		p_up[i] = tmp;
+        p_up.push_back(tmp);
 		tmp = readLine(p_down_file, 6);
-		p_down[i] = tmp;
+		p_down.push_back(tmp);
 		tmp = readLine(q_up_file, 6);
-		q_up[i] = tmp;
+		q_up.push_back(tmp);
 		tmp = readLine(q_down_file, 6);
-		q_down[i] = tmp;
+		q_down.push_back(tmp);
 
 		// read jacobian_inv
 		Matrix6d Jtmp;
@@ -88,7 +91,7 @@ void motionPlan::loadConfig(string root, string p_up_fn, string p_down_fn, strin
 			tmp = readLine(jacobian_file, 6);
 			Jtmp.row(j) = tmp;
 		}
-		Jvec[i] = Jtmp;
+		Jvec.push_back(Jtmp);
 	}
 
 	p_up_file.close();
@@ -106,16 +109,17 @@ void motionPlan::test_knock(int idx)
 	double dv = 10.0;
 
 	// volume related
-	double up_and_down_time = 0.3;
-	double dth = 3.0;
+	double stop_time = 0.05;
+	double dth = 3;
 
-	ofstream ppbFile("test_knock.txt");
+	ofstream ppbFile("C:/Users/Administrator/Desktop/rbpro/output/test_knock.txt");
 	// 1. qo dqo qf dqf
-	Vector6d pf = p_down[idx];
 	Vector6d qo = q_up[idx];
-	Vector6d qf = q_down[idx];
+    Vector6d qf;
 	Vector6d dqo = Vector6d::Zero();
 
+    // minus some angle
+    qf = minusPitchAngle(-dth, p_down[idx]);
 	Vector6d dqf;
 	dqf << 0, 0, 0, 0, dv, 0;
 	dqf = Jvec[idx] * dqf;
@@ -123,10 +127,19 @@ void motionPlan::test_knock(int idx)
 	Matrix<double, 6, 4> cof_mat;
 	cof_mat = getCofMatrix(qo, dqo, qf, dqf, td);
 	samplePoints(ppbFile, cof_mat, td, sample_time);
-	up_and_down(dth, up_and_down_time, pf, qf, dqf, ppbFile);
 
+    // 2. stop quickly
+    qo = qf;
+    dqo = dqf;
+    qf = q_down[idx];
+    dqf = Vector6d::Zero();
+    cof_mat = getCofMatrix(qo, dqo, qf, dqf, stop_time);
+    samplePoints(ppbFile, cof_mat, stop_time, sample_time);
+	
+
+    // 3. go up
 	qo = qf;
-	dqo = -dqf;
+	dqo = dqf;
 	qf = q_up[idx];
 	dqf = Vector6d::Zero();
 	cof_mat = getCofMatrix(qo, dqo, qf, dqf, td);
@@ -155,16 +168,18 @@ void motionPlan::test_fromOneToAnother(int from, int to)
 	double interval = 2.0;
 
 	// volume related
-	double up_and_down_time = 0.3;
+	double stop_time = 0.05;
 	double dth = 3.0;
 
-	ofstream ppbFile("test_fromOneToAnother.txt");
+	ofstream ppbFile("C:/Users/Administrator/Desktop/rbpro/output/test_fromOneToAnother.txt");
 	
 	//1. from down and knock
 	Vector6d po;
+    Vector6d qo = q_up[from];
 	Vector6d pf = p_down[from];
-	Vector6d qo = q_up[from];
-	Vector6d qf = q_down[from];
+    Vector6d qf;
+    // minus some angle
+    qf = minusPitchAngle(-dth, p_down[from]);
 	Vector6d dqo = Vector6d::Zero();
 	Vector6d dqf;
 	dqf << 0, 0, 0, 0, dv, 0;
@@ -173,14 +188,22 @@ void motionPlan::test_fromOneToAnother(int from, int to)
 	Matrix<double, 6, 4> cof_mat;
 	cof_mat = getCofMatrix(qo, dqo, qf, dqf, td);
 	samplePoints(ppbFile, cof_mat, td, sample_time);
-	up_and_down(dth, up_and_down_time, pf, qf, dqf, ppbFile);
+	
+    // 2. stop quickly
+    qo = qf;
+    dqo = dqf;
+    qf = q_down[from];
+    dqf = Vector6d::Zero();
+    cof_mat = getCofMatrix(qo, dqo, qf, dqf, stop_time);
+    samplePoints(ppbFile, cof_mat, stop_time, sample_time);
+    
 
 	// 2. goto to point through via point
 	po = p_down[from];
 	qo = qf;
-	dqo = -dqf;
+	dqo = dqf;
 	pf = p_down[to];
-	qf = q_down[to];
+	qf = minusPitchAngle(-dth, p_down[to]);
 	dqf << 0, 0, 0, 0, dv, 0;
 	dqf = Jvec[to] * dqf;
 
@@ -204,11 +227,18 @@ void motionPlan::test_fromOneToAnother(int from, int to)
 	cof_mat = tmp_cof.block<6, 4>(0, 4);
 	//cout << "cof2: " << cof_mat << endl;
 	samplePoints(ppbFile, cof_mat, interval / 2, sample_time);
-	up_and_down(dth, up_and_down_time, pf, qf, dqf, ppbFile);
 	
+
+    qo = qf;
+    dqo = dqf;
+    qf = q_down[to];
+    dqf = Vector6d::Zero();
+    cof_mat = getCofMatrix(qo, dqo, qf, dqf, stop_time);
+    samplePoints(ppbFile, cof_mat, stop_time, sample_time);
+
 	//3. get up
 	qo = qf;
-	dqo = -dqf;
+	dqo = dqf;
 	qf = q_up[to];
 	dqf = Vector6d::Zero();
 	cof_mat = getCofMatrix(qo, dqo, qf, dqf, td);
@@ -217,6 +247,27 @@ void motionPlan::test_fromOneToAnother(int from, int to)
 	ppbFile.close();
 }
 
+
+Vector6d  motionPlan::minusPitchAngle(double dth, const Vector6d& po)
+{
+    Vector3d zyz = po.tail<3>() / 180 * PI;
+
+    Eigen::AngleAxisd yawAngle(AngleAxisd(zyz(0), Vector3d::UnitZ()));
+    Eigen::AngleAxisd pitchAngle(AngleAxisd(zyz(1), Vector3d::UnitY()));
+    Eigen::AngleAxisd rollAngle(AngleAxisd(zyz(2), Vector3d::UnitZ()));
+    Matrix3d rot;
+    rot = yawAngle * pitchAngle * rollAngle;
+    //cout << "rot1 : \n" << rot << endl;
+    rot = AngleAxisd(dth / 180 * PI, Vector3d::UnitY()).toRotationMatrix() * rot;
+    //cout << "rot2 : \n" << rot << endl;
+    Vector6d pf, qf;
+    pf.head<3>() = po.head<3>();
+    pf.tail<3>() = RtoEulerAngles(rot);
+    //cout << "pf: " << pf.transpose() << endl;
+    qf = eigenGetJoints(pf);
+
+    return qf;
+}
 
 
 void motionPlan::up_and_down(double dth, double td, const Vector6d& po, const Vector6d& qo, const Vector6d& dqo, ofstream& out)
@@ -267,7 +318,14 @@ void motionPlan::samplePoints(ofstream& out, Matrix<double, 6, 4>& cof, double t
 		Vector4d tt;
 		tt << at * at * at, at* at, at, 1;
 		Vector6d q = cof * tt;
-		out << q.transpose() << endl;
+		//out << q.transpose() << endl;
+        out << q(0) << " "
+            << q(1) << " "
+            << q(2) << " "
+            << q(3) << " "
+            << q(4) << " "
+            << q(5) << endl;
+
 		at += spt;
 	}
 }
@@ -286,41 +344,49 @@ void motionPlan::playSong(const vector<int>& note, const vector<double>& interva
 
 	int num_note = note.size();
 	double t_start = 1.0;
-	double up_and_down_time = 0.3;
+	double stop_time = 0.05;
 	double dth = 3.0;
 
 	for (int i = 0; i <= num_note; i++)
 	{	
-		if (i % 5 == 0)	cout << 1.0 * i / num_note << endl;
+		if (i % 3 == 0)	cout << "process: "<< 1.0 * i / num_note << endl;
 		Vector6d po, pf, qo, qf, dqo, dqf;
 		Matrix<double, 6, 4> cof_mat;
 		if (i == 0) {
 			pf = p_down[note[i]];
 			qo = q_up[note[i]];
-			qf = q_down[note[i]];
+			qf = minusPitchAngle(-dth, p_down[note[i]]);
 			dqo = Vector6d::Zero();
 			dqf << 0, 0, 0, 0, volume[i], 0;
 			dqf = Jvec[note[i]] * dqf;
 			cof_mat = getCofMatrix(qo, dqo, qf, dqf, t_start);
 			samplePoints(ppbFile, cof_mat, t_start, sample_time);
-			up_and_down(dth, up_and_down_time, pf, qf, dqf, ppbFile);
+			
+            // stop quickly
+            qo = qf;
+            dqo = dqf;
+            qf = q_down[note[i]];
+            dqf = Vector6d::Zero();
+            cof_mat = getCofMatrix(qo, dqo, qf, dqf, stop_time);
+            samplePoints(ppbFile, cof_mat, stop_time, sample_time);
 			continue;
 		}
 		if (i == num_note)
 		{
 			qo = qf;
-			dqo = -dqf;
+			dqo = dqf;
 			qf = q_up[note[i - 1]];
 			dqf = Vector6d::Zero();
 			cof_mat = getCofMatrix(qo, dqo, qf, dqf, t_start);
 			samplePoints(ppbFile, cof_mat, t_start, sample_time);
 			break;
 		}
-		po = p_down[note[i]];
+
+		po = p_down[note[i-1]];
 		qo = qf;
-		dqo = -dqf;
+		dqo = dqf;
 		pf = p_down[note[i]];
-		qf = q_down[note[i]];
+		qf = minusPitchAngle(-dth, p_down[note[i]]);
 		dqf << 0, 0, 0, 0, volume[i], 0;
 		dqf = Jvec[note[i]] * dqf;
 
@@ -333,7 +399,13 @@ void motionPlan::playSong(const vector<int>& note, const vector<double>& interva
 		samplePoints(ppbFile, cof_mat, interval[i - 1] / 2, sample_time);
 		cof_mat = tmp_cof.block<6, 4>(0, 4);
 		samplePoints(ppbFile, cof_mat, interval[i - 1] / 2, sample_time);
-		up_and_down(dth, up_and_down_time, pf, qf, dqf, ppbFile);
+		
+        qo = qf;
+        dqo = dqf;
+        qf = q_down[note[i]];
+        dqf = Vector6d::Zero();
+        cof_mat = getCofMatrix(qo, dqo, qf, dqf, stop_time);
+        samplePoints(ppbFile, cof_mat, stop_time, sample_time);
 	}
 
 	ppbFile.close();
