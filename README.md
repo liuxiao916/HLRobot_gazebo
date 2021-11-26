@@ -29,7 +29,7 @@ rostopic pub /HL_controller/command std_msgs/Float64MultiArray "layout:
     size: 0
     stride: 0
   data_offset: 0
-data: [1.1, 2.1, 1.2, 2.3, 1.2, 3.1]" 
+data: [0.426645, 0.515256, 1.761281, -0.169471, 0.998398, 5.370273]" 
 
 ```
 

@@ -210,7 +210,25 @@
         <child link="link6" />
         <axis xyz="0 0 -1" />
     </joint>
-
+    <link name="tool_frame">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <sphere radius="0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <sphere radius="0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint62toolframe" type="fixed">
+        <origin xyz="0 0 0" rpy="3.14159 0 -1.5707" />
+        <parent link="link6" />
+        <child link="tool_frame" />
+    </joint>
 
     <!-- transmission -->
     <transmission name="joint1_trans">
