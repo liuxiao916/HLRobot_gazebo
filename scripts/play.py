@@ -6,6 +6,8 @@ from sensor_msgs.msg import JointState
 import roslib
 roslib.load_manifest('sound_play')
 
+path = "/home/liuxiao/catkin_ws/src/HLRobot_gazebo/cubicTrajectoryPlanning/data/q_down.txt"
+
 
 sound_client = SoundClient()
 sound_C = sound_client.waveSound(
@@ -54,14 +56,15 @@ sound_14 = sound_client.waveSound(
 sound_15 = sound_client.waveSound(
     '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/15.wav')
 
-threshold = 0.02
+threshold = 0.01
 
 q_down = np.zeros([15, 6])
-with open('/Users/liuxiao/Documents/GitHub/HLRobot_gazebo/cubicTrajectoryPlanning/data/q_down.txt', 'r') as f:
+with open(path, 'r') as f:
     lines = f.readlines()
     for index, line in enumerate(lines):
         txtdata = line.split()
-        q_down[index] = txtdata/180*3.1415926
+        q_down[index] = txtdata
+    q_down = q_down/180*3.1415926
 
 
 def callback(data):
@@ -72,36 +75,36 @@ def callback(data):
         index = np.argmin(diff)
         print(index)
         if(index == 0):
-            sound_1.play()
+            sound_G.play()
         elif(index == 1):
-            sound_2.play()
+            sound_A.play()
         elif(index == 2):
-            sound_3.play()
+            sound_B.play()
         elif(index == 3):
-            sound_4.play()
+            sound_C.play()
         elif(index == 4):
-            sound_5.play()
+            sound_D.play()
         elif(index == 5):
-            sound_6.play()
+            sound_E.play()
         elif(index == 6):
-            sound_7.play()
+            sound_F.play()
         elif(index == 7):
-            sound_8.play()
+            sound_G.play()
         elif(index == 8):
-            sound_9.play()
+            sound_A.play()
         elif(index == 9):
-            sound_10.play()
+            sound_B.play()
         elif(index == 10):
-            sound_11.play()
+            sound_C.play()
         elif(index == 11):
-            sound_12.play()
+            sound_D.play()
         elif(index == 12):
-            sound_13.play()
+            sound_E.play()
         elif(index == 13):
-            sound_14.play()
+            sound_F.play()
         elif(index == 14):
-            sound_15.play()
-        rospy.sleep(0.5)
+            sound_G.play()
+        rospy.sleep(0.3)
 
 
 def listener():
