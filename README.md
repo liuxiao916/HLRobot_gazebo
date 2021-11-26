@@ -30,6 +30,11 @@ rostopic pub /HL_controller/command std_msgs/Float64MultiArray "layout:
     stride: 0
   data_offset: 0
 data: [0.426645, 0.515256, 1.761281, -0.169471, 0.998398, 5.370273]" 
+```
+## Frame
+Frame `base_foorprint` and `tool_frame` are used to calibrate the world frame.(To get the world frame in lab) If you want to know the coordination in world frame, you can check the transform between them.
+```bash
+rosrun tf tf_echo base_link tool_frame
 
 ```
 
@@ -44,6 +49,7 @@ rosrun hlrobot_gazebo publisher.py
 ## Todo
 - [x] load angle of joints from txt file to control the robot
 - [x] Try to play music by simulation
+- [ ] Show world coordination 
 - [ ] Implement the forward and inverse kinematics in this simulation
 - [ ] Implement Motion Planning (Linear Function with Parabolic Blends) 
 - [ ] Simply control the robot by giving Cartesian coordinate
