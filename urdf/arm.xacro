@@ -295,4 +295,10 @@
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
     </gazebo>
 
+    <!-- gazebo -->
+    <gazebo reference="base_link">
+            <material>Gazebo/White</material>
+            <mu1>500</mu1>
+            <mu2>500</mu2>
+     </gazebo>
 </robot>
