@@ -19,6 +19,19 @@ catkin_make
 roslaunch hlrobot_gazebo gazebo.launch
 ```
 
+## File Structure
+| File                    | Instruction                                                                                                                                                                                                           |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| config                  | config file of controller in Gazebo                                                                                                                                                                                   |
+| cubicTrajectoryPlanning | Include Forward and Inverse kinematics source file and motion planning source file to generate the music book. The music book (note and PPB) and the location of the insturment in Joint space (q_down) is also in it |
+| data                    | The sound file of roll call and the picture for readme                                                                                                                                                                |
+| launch                  | Launch file for simulation                                                                                                                                                                                            |
+| meshes                  | The models for robot manipulators                                                                                                                                                                                     |
+| rviz                    | The config file of rviz                                                                                                                                                                                               |
+| scripts                 | Ros Python files                                                                                                                                                                                                      |
+| udrf                    | The description file of the robot manipulators                                                                                                                                                                        |
+
+
 ## Control
 In order to verify the forward and inverse kinematics, I use `position_controllers/JointGroupPositionController` for controller and `PositionJointInterface` for each joint. It means for every transmission the input is position and output is also position.
 
@@ -41,12 +54,16 @@ OR
 ```bash
 rosrun hlrobot_gazebo show_tf.py
 ```
+### Compare the frame in simulation and reality
 
-## Load and play
-Edit the path of txt file in `scripts/publisher.py `
-Edit the path of the `cubicTrajectoryPlanning/data/q_down.txt` in `scripts/player.py`
-Music book is in `cubicTrajectoryPlanning/data/PPB`
+![](data/picture/Frame1.jpg)![](data/picture/Frame1_Simulation.png)
 
+## Load music book and play music
+**Edit the path of music book(PPB files) in `scripts/publisher.py `**  
+Music book is in `cubicTrajectoryPlanning/data/PPB`  
+**Edit the path of the `cubicTrajectoryPlanning/data/q_down.txt` in `scripts/player.py`** 
+
+![Instrument](data/picture/Instrument.jpg)
 ```bash
 rosrun sound_play soundplay_node.py
 rosrun hlrobot_gazebo play.py
