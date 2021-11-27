@@ -68,9 +68,17 @@ with open(path, 'r') as f:
 
 
 def callback(data):
-    location = np.array([data.position[0], data.position[1], data.position[2],
+    location_1 = np.array([data.position[0], data.position[1], data.position[2],
                          data.position[3], data.position[4], data.position[5]])
-    diff = np.linalg.norm(location - q_down, axis=1)
+    location_2 = np.array([data.position[0], data.position[1], data.position[2],
+                         data.position[3], data.position[4], data.position[5]+2*3.1415926])
+    diff_1 = np.linalg.norm(location_1 - q_down, axis=1)
+    diff_2 = np.linalg.norm(location_2 - q_down, axis=1)
+    if(diff_1[0] > diff_2[0]):
+        diff = diff_2
+    else:
+        diff = diff_1
+            
     if(np.min(diff) < threshold):
         index = np.argmin(diff)
         print(index)
