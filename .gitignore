@@ -33,3 +33,14 @@
 *.out
 *.app
 scripts/test.py
+build/.cmake/api/v1/query/client-vscode/query.json
+build/CMakeCache.txt
+build/CMakeFiles/3.16.4/CMakeCCompiler.cmake
+build/CMakeFiles/3.16.4/CMakeCXXCompiler.cmake
+build/CMakeFiles/3.16.4/CMakeDetermineCompilerABI_C.bin
+build/CMakeFiles/3.16.4/CMakeDetermineCompilerABI_CXX.bin
+build/CMakeFiles/3.16.4/CMakeSystem.cmake
+build/CMakeFiles/3.16.4/CompilerIdC/CMakeCCompilerId.c
+build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp
+build/CMakeFiles/cmake.check_cache
+build/CMakeFiles/CMakeOutput.log
