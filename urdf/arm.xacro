@@ -295,4 +295,9 @@
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
     </gazebo>
 
+    <gazebo reference="base_link">
+        <mu1 value="100"/>
+        <mu2 value="100"/>
+    </gazebo>
+
 </robot>
