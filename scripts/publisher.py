@@ -20,7 +20,7 @@ def publish():
                 angle.append(float(txtdata[2])/180*PI)
                 angle.append(float(txtdata[3])/180*PI)
                 angle.append(float(txtdata[4])/180*PI)
-                angle.append(float(txtdata[5])/180*PI-PI)
+                angle.append(float(txtdata[5])/180*PI)
                 command = Float64MultiArray(data = angle)
                 pub.publish(command)
                 rate.sleep()
