@@ -1,0 +1,38 @@
+<sdf version='1.6'>
+  <model name='qin'>
+    <static>true</static>
+    <link name='base_link'>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.026044 -0.001815 0.006198 0 -0 0</pose>
+        <mass>0.33203</mass>
+        <inertia>
+          <ixx>0.0002513</ixx>
+          <ixy>-1.5475e-06</ixy>
+          <ixz>-6.3224e-07</ixz>
+          <iyy>0.0023575</iyy>
+          <iyz>6.2199e-07</iyz>
+          <izz>0.0025989</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://qin/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://qin/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

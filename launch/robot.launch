@@ -1,0 +1,22 @@
+<launch>
+    <env name="GAZEBO_MODEL_PATH" value="$(find hlrobot_gazebo)/models"/>
+    <env name="GAZEBO_RESOURCE_PATH" value="$(find hlrobot_gazebo)/models"/>
+	<param name="robot_description" command="$(find xacro)/xacro $(find hlrobot_gazebo)/urdf/robot.xacro" />
+    <!-- loads the controllers -->
+    <rosparam file="$(find hlrobot_gazebo)/config/control.yaml" command="load" />
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" args="HL_controller joint_state_controller"/>
+    <!-- converts joint states to TF transforms -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <arg name="world_name" default="$(find hlrobot_gazebo)/worlds/robot.world" />
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+	    <arg name="world_name" value="$(arg world_name)" />
+	    <arg name="paused" value="false" />
+	    <arg name="use_sim_time" value="true" />
+	    <arg name="gui" value="true" />
+	    <arg name="headless" value="false" />
+	    <arg name="debug" value="false" />
+    </include>
+    <!-- 在 gazebo 中显示机器人模型 -->
+    <node pkg="gazebo_ros" type="spawn_model" name="model" args="-urdf -model HLRobot -param robot_description" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find hlrobot_gazebo)/rviz/urdf.rviz" />
+</launch>
