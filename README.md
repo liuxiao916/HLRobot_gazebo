@@ -2,6 +2,9 @@
 A simulation for QKM HL6-0900 6DOF robot based on gazebo
 ![](data/picture/robot.png)
 
+## Demo
+[Demo Link](https://www.bilibili.com/video/BV1qL4y1p7Gr?p=4)
+
 ## Install
 ```bash
 sudo apt-get install ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-hector-gazebo-plugins 
