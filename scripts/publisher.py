@@ -2,7 +2,7 @@
 import rospy
 from std_msgs.msg import Float64MultiArray
 
-path = '/home/eric/catkin_ws/src/HLRobot_gazebo/cubicTrajectoryPlanning/data/PPB/littlestar.txt'
+path = '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/cubicTrajectoryPlanning/data/PPB/littlestar.txt'
 
 def publish():
     PI = 3.1415926

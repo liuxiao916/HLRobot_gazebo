@@ -6,55 +6,55 @@ from sensor_msgs.msg import JointState
 import roslib
 roslib.load_manifest('sound_play')
 
-path = "/home/eric/catkin_ws/src/HLRobot_gazebo/cubicTrajectoryPlanning/data/q_down.txt"
+path = "/home/liuxiao/catkin_ws/src/HLRobot_gazebo/cubicTrajectoryPlanning/data/q_down.txt"
 
 
 sound_client = SoundClient()
 sound_C = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/Do.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/Do.wav')
 sound_D = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/Re.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/Re.wav')
 sound_E = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/Mi.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/Mi.wav')
 sound_F = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/Fa.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/Fa.wav')
 sound_G = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/Sol.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/Sol.wav')
 sound_A = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/La.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/La.wav')
 sound_B = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/Si.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/Si.wav')
 
 sound_1 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/1.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/1.wav')
 sound_2 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/2.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/2.wav')
 sound_3 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/3.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/3.wav')
 sound_4 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/4.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/4.wav')
 sound_5 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/5.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/5.wav')
 sound_6 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/6.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/6.wav')
 sound_7 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/7.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/7.wav')
 sound_8 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/8.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/8.wav')
 sound_9 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/9.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/9.wav')
 sound_10 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/10.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/10.wav')
 sound_11 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/11.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/11.wav')
 sound_12 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/12.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/12.wav')
 sound_13 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/13.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/13.wav')
 sound_14 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/14.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/14.wav')
 sound_15 = sound_client.waveSound(
-    '/home/eric/catkin_ws/src/HLRobot_gazebo/data/sounds/15.wav')
+    '/home/liuxiao/catkin_ws/src/HLRobot_gazebo/data/sounds/15.wav')
 
 threshold = 0.01
 
