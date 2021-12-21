@@ -18,7 +18,7 @@
     <link name="base_link">
         <inertial>
             <origin xyz="0.000405214557039469 0.00397651461292238 0.169839806497255" rpy="0 0 0" />
-            <mass value="500" />
+            <mass value="50" />
             <inertia ixx="0.10581489524942" ixy="0.000527121157082633" ixz="-7.56911148408879E-05" iyy="0.107337475091701" iyz="-0.00154168528325628" izz="0.101543534070196" />
         </inertial>
         <visual>
@@ -295,12 +295,15 @@
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
     </gazebo>
 
+    <!-- Used for fixing robot to Gazebo 'base_link' -->
+    <link name="world"/>
 
-    <!-- gazebo -->
-    <gazebo reference="base_link">
-        <material>Gazebo/White</material>
-        <mu1>500</mu1>
-        <mu2>500</mu2>
-    </gazebo>
+    <joint name="fixed" type="fixed">
+        <parent link="world"/>
+        <child link="base_footprint"/>
+    </joint>
+
+
+
 
 </robot>
