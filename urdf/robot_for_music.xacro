@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="HLRobot">
+
+    <xacro:include filename="arm.xacro" />
+    <xacro:include filename="tool.xacro" />
+
+</robot>
+

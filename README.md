@@ -75,7 +75,7 @@ rosrun hlrobot_gazebo publisher.py
 
 OR
 ```bash
-roslaunch hlrobot_gazebo gazebo.launch
+roslaunch hlrobot_gazebo gazebo_for_music.launch
 roslaunch hlrobot_gazebo play_music.launch
 ```
 
@@ -83,9 +83,8 @@ roslaunch hlrobot_gazebo play_music.launch
 - [x] load angle of joints from txt file to control the robot
 - [x] Try to play music in gazebo
 - [x] Show world coordination 
-- [ ] Implement the forward and inverse kinematics in this simulation
-- [ ] Implement Motion Planning (Linear Function with Parabolic Blends) 
-- [ ] Simply control the robot by giving Cartesian coordinate
+- [x] Implement the forward and inverse kinematics in this simulation
+- [x] Simply control the robot by giving Cartesian coordinate
 - [ ] Anything useful 
 
 
