@@ -1,0 +1,29 @@
+<launch>
+    <arg name="group_ns" default="/"/>
+    <arg name="with_moveit" default="false"/>
+    <arg name="rviz" default="true"/>
+    <arg name="model" default="$(find hlrobot_gazebo)/urdf/arm.xacro"/>
+    <arg name="model_pose" default="-x 0 -y 0 -z 0.003"/>
+    <arg name="world_name" default="$(find hlrobot_gazebo)/worlds/robot.world" />
+
+    <env name="GAZEBO_MODEL_PATH" value="$(find hlrobot_gazebo)/models"/>
+    <env name="GAZEBO_RESOURCE_PATH" value="$(find hlrobot_gazebo)/models"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)" />
+        <arg name="paused" value="false" />
+        <arg name="use_sim_time" value="true" />
+        <arg name="gui" value="true" />
+        <arg name="headless" value="false" />
+        <arg name="debug" value="false" />
+    </include>
+
+    <include file="$(find hlrobot_gazebo)/launch/hl_model.launch">
+        <arg name="group_ns" value="$(arg group_ns)"/>
+        <arg name="with_moveit" value="$(arg with_moveit)"/>
+        <arg name="rviz" value="$(arg rviz)"/>
+        <arg name="model" value="$(arg model)"/>
+        <arg name="model_pose" value="$(arg model_pose)"/>
+    </include>
+
+</launch>

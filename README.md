@@ -9,6 +9,8 @@ A simulation for QKM HL6-0900 6DOF robot based on gazebo
 ```bash
 sudo apt-get install ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-hector-gazebo-plugins 
 sudo apt-get install ros-melodic-sound-play 
+sudo apt-get install ros-melodic-joint-trajectory-controller
+sudo apt-get install ros-melodic-moveit*
 pip install scipy
 cd catkin_ws/src
 git clone https://github.com/liuxiao916/HLRobot_gazebo.git
@@ -16,10 +18,9 @@ cd catkin_ws/
 catkin_make
 ```
 
-
 ## Launch
 ```bash
-roslaunch hlrobot_gazebo gazebo.launch
+roslaunch hlrobot_gazebo hl_gazebo.launch
 ```
 
 ## File Structure
@@ -49,8 +50,11 @@ rostopic pub /HL_controller/command std_msgs/Float64MultiArray "layout:
 data: [0.426645, 0.515256, 1.761281, -0.169471, 0.998398, 5.370273]" 
 ```
 
-## Inverse Kinematice
+For Moveit, I change the controller into `position_controllers/JointTrajectoryController`.
 
+## Inverse Kinematice
+Set IKsolver.cpp to solve the inverse kinematic and control the robot.
+You can also use moveit now.
 
 ## Frame
 Frame `base_foorprint` and `tool_frame` are used to calibrate the world frame.(To get the world frame in lab) If you want to know the coordination in world frame, you can check the transform between them.
@@ -89,6 +93,7 @@ roslaunch hlrobot_gazebo play_music.launch
 - [x] Show world coordination 
 - [x] Implement the forward and inverse kinematics in this simulation
 - [x] Simply control the robot by giving Cartesian coordinate
+- [x] Moveit!
 - [ ] Anything useful 
 
 

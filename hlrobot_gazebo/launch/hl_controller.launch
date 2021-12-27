@@ -1,0 +1,19 @@
+<launch>
+    <arg name="with_moveit" default="false"/>
+
+    <group if="$(arg with_moveit)">
+        <rosparam file="$(find hlrobot_gazebo)/config/trajectory_control.yaml" command="load" />
+
+        <node name="other_controller_spawner" pkg="controller_manager" type="spawner" respawn="true" output="screen" args="
+            arm_joint_controller
+            joint_state_controller"/>
+    </group>
+
+    <group unless="$(arg with_moveit)">
+        <rosparam file="$(find hlrobot_gazebo)/config/simple_control.yaml" command="load" />
+
+        <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="true" output="screen" args="
+            HL_controller
+            joint_state_controller"/>
+    </group>
+</launch>

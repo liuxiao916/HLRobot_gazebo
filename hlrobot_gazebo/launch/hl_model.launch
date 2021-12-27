@@ -1,0 +1,24 @@
+<launch>
+    <arg name="group_ns" default="/"/>
+    <arg name="with_moveit" default="false"/>
+    <arg name="rviz" default="false"/>
+    <arg name="model" default="$(find hlrobot_gazebo)/urdf/arm.xacro"/>
+    <arg name="model_pose" default="-x 0 -y 0 -z 0.003"/>
+
+    <param name="/robot_description" command="$(find xacro)/xacro '$(arg model)' "/>
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param /robot_description
+          -model HLRobot $(arg model_pose) " output="screen"/>
+
+    <group ns="$(arg group_ns)">
+        <!-- controller-->
+        <include file="$(find hlrobot_gazebo)/launch/hl_controller.launch">
+            <arg name="with_moveit" value="$(arg with_moveit)"/>
+        </include>
+
+        <!-- joint_states-->
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+        </node>
+    </group>
+
+    <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find hlrobot_gazebo)/rviz/urdf.rviz"/>
+</launch>

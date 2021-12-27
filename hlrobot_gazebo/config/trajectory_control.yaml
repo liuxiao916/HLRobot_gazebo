@@ -1,0 +1,21 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 20
+
+arm_joint_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - joint1
+    - joint2
+    - joint3
+    - joint4
+    - joint5
+    - joint6
+
+  gains:
+    joint1: {p: 8000, i: 1000, d: 1000, i_clamp: 0.1}
+    joint2: {p: 8000, i: 1000, d: 1000, i_clamp: 0.1}
+    joint3: {p: 8000, i: 1000, d: 1000, i_clamp: 0.1}
+    joint4: {p: 8000, i: 1000, d: 1000, i_clamp: 0.1}
+    joint5: {p: 8000, i: 1000, d: 1000, i_clamp: 0.1}
+    joint6: {p: 8000, i: 1000, d: 1000, i_clamp: 0.1}
