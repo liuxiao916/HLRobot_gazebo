@@ -1,6 +1,6 @@
 # HLRobot_gazebo
 A simulation for QKM HL6-0900 6DOF robot based on gazebo
-![](data/picture/robot.png)
+![](hlrobot_gazebo/data/picture/robot.png)
 
 ## Demo
 [Demo Link](https://www.bilibili.com/video/BV1qL4y1p7Gr?p=4)
@@ -19,8 +19,21 @@ catkin_make
 ```
 
 ## Launch
+Just launch a robot.
 ```bash
 roslaunch hlrobot_gazebo hl_gazebo.launch
+```
+Launch robot to play music.
+```bash
+roslaunch hlrobot_gazebo bringup_music.launch
+```
+Launch robot to plan with robot.
+```bash
+roslaunch hlrobot_gazebo bringup_moveit.launch
+```
+Launch robot to start hand-eye calibration.
+```bash
+roslaunch hlrobot_gazebo bringup_calibration.launch
 ```
 
 ## File Structure
@@ -67,14 +80,14 @@ rosrun hlrobot_gazebo show_tf.py
 ```
 ### Compare the frame in simulation and reality
 
-![](data/picture/Frame1.jpg)![](data/picture/Frame1_Simulation.png)
+![](hlrobot_gazebo/data/picture/Frame1.jpg)![](hlrobot_gazebo/data/picture/Frame1_Simulation.png)
 
 ## Load music book and play music
 **Edit the path of music book(PPB files) in `scripts/publisher.py `**  
 Music book is in `cubicTrajectoryPlanning/data/PPB`  
 **Edit the path of the `cubicTrajectoryPlanning/data/q_down.txt` in `scripts/player.py`** 
 
-![Instrument](data/picture/Instrument.jpg)
+![Instrument](hlrobot_gazebo/data/picture/Instrument.jpg)
 ```bash
 rosrun sound_play soundplay_node.py
 rosrun hlrobot_gazebo play.py
@@ -83,7 +96,7 @@ rosrun hlrobot_gazebo publisher.py
 
 OR
 ```bash
-roslaunch hlrobot_gazebo gazebo_for_music.launch
+roslaunch hlrobot_gazebo bringup_music.launch
 roslaunch hlrobot_gazebo play_music.launch
 ```
 
