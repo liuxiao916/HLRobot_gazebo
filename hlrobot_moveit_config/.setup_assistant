@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: hlrobot_gazebo
+    relative_path: urdf/arm.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/arm.srdf
+  CONFIG:
+    author_name: Xiao
+    author_email: hitlx916@gmail.com
+    generated_timestamp: 1640590339
