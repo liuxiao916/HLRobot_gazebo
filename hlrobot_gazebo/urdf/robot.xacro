@@ -3,8 +3,8 @@
     <xacro:property name="PI" value="3.1415926535897931"/>
     <xacro:include filename="arm.xacro" />
     <xacro:include filename="CameraSensor.xacro"/>
-    <xacro:Macro_CameraROS name="camera" parent="tool_frame" frame="camera_link" image_topic="image_raw" fov="1.396" hz="10" width="640" height="480">
-        <origin xyz="0 0 0.2" rpy="0 0 0" />
+    <xacro:Macro_CameraROS name="camera" parent="tool_frame" frame="camera_link" image_topic="image_raw" fov="1.396" hz="10" width="1280" height="720">
+        <origin xyz="0.05 0 0.2" rpy="0 0 0" />
     </xacro:Macro_CameraROS>
 
 </robot>

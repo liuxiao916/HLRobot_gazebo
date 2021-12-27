@@ -86,15 +86,15 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='default'>
-      <sim_time>1078 905000000</sim_time>
-      <real_time>158 885314548</real_time>
-      <wall_time>1640530390 711599195</wall_time>
-      <iterations>64210</iterations>
+      <sim_time>1234 993000000</sim_time>
+      <real_time>245 241537600</real_time>
+      <wall_time>1640612850 755340673</wall_time>
+      <iterations>156088</iterations>
       <model name='calibration_plane'>
-        <pose frame=''>2.5 0 1 -3.14159 -1.57079 3.14159</pose>
+        <pose frame=''>1.5 0 1 3.14159 -1.57079 -3.14159</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>2.5 0 1 -3.14159 -1.57079 3.14159</pose>
+          <pose frame=''>1.5 0 1 3.14159 -1.57079 -3.14159</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -116,7 +116,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose frame=''>-4.18144 10.4052 3.2113 -0 0.154308 -1.14014</pose>
+        <pose frame=''>-3.00357 -9.46098 4.01959 0 0.190308 0.803046</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>

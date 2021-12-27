@@ -62,11 +62,11 @@
                     <cameraInfoTopicName>camera_info</cameraInfoTopicName>
                     <frameName>${frame}</frameName>
                     <hackBaseline>0.07</hackBaseline>
-                    <distortionK1>0.0</distortionK1>
-                    <distortionK2>0.0</distortionK2>
-                    <distortionK3>0.0</distortionK3>
-                    <distortionT1>0.0</distortionT1>
-                    <distortionT2>0.0</distortionT2>
+                    <distortionK1>-0.3299099196112457</distortionK1>
+                    <distortionK2>0.125097165288712</distortionK2>
+                    <distortionK3>0</distortionK3>
+                    <distortionT1>0.001174557712517122</distortionT1>
+                    <distortionT2>-0.0006193756409617658</distortionT2>
                 </plugin>
             </sensor>
             <material>Gazebo/Yellow</material>

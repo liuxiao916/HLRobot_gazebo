@@ -100,6 +100,16 @@ roslaunch hlrobot_gazebo bringup_music.launch
 roslaunch hlrobot_gazebo play_music.launch
 ```
 
+## Hand eye calibration
+Use this robot to get the data for hand eye calibration.
+Use image_view to collect image.
+```bash
+rosrun image_view image_view image:=/camera/image_raw
+```
+
+
+
+
 ## Todo
 - [x] load angle of joints from txt file to control the robot
 - [x] Try to play music in gazebo

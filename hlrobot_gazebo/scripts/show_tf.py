@@ -25,7 +25,16 @@ def callback(data):
             print(rot)
             print("Rotation in RPY(ZYZ in degree):")
             print(r.as_euler('ZYZ',degrees = 'True'))
+            print("Rotation matrix:")
+            print(r.as_dcm())         #r.as_matrix() for python3
             print('--------------------------------------------------')
+            print("T matrix")
+            T = np.zeros([4,4])
+            T[0:3,0:3] = r.as_dcm()
+            print(translation)
+            T[0:3,3] = translation.T
+            T[3,3]=1
+            print(T)
             print(' ')
             ispublished = 1
             rospy.sleep(2)
