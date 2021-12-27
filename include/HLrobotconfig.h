@@ -23,6 +23,8 @@ namespace HLRobot
 	//Inverse kinematics and Forward kinematics method function
 	void robotBackward(const double* TransVector, bool* config, double* theta);
 	void robotForward(const double* q, double* TransVector, bool* config);
+
+    void setTMatrix(double* TransMatrix);
 	
 	Vector6d eigenGetJoints(Vector6d p);
 	Vector3d RtoEulerAngles(Matrix3d r);

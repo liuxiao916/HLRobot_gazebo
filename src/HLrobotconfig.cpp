@@ -212,6 +212,13 @@ namespace HLRobot
 
 	}
 
+    void setTMatrix(double* TransMatrix){
+        for (int i = 0; i < 16; i++)
+            {
+                mTransMatrix[i] = TransMatrix[i];
+            }
+    }
+
 	void GetJointAngles(double& angle1, double& angle2, double& angle3, double& angle4, double& angle5, double& angle6)
 	{
 		double theta[6]{ 0 };
