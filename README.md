@@ -27,7 +27,7 @@ Launch robot to play music.
 ```bash
 roslaunch hlrobot_gazebo bringup_music.launch
 ```
-Launch robot to plan with robot.
+Launch robot to plan with moveit.
 ```bash
 roslaunch hlrobot_gazebo bringup_moveit.launch
 ```

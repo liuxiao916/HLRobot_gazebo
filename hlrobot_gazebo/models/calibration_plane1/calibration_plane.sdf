@@ -1,12 +1,12 @@
 <?xml version='1.0'?>
 <sdf version="1.6">
-    <model name="calibration_plane2">
+    <model name="calibration_plane1">
         <static>true</static>
         <link name="link">
             <visual name="visual">
                 <geometry>
                     <mesh>
-                        <uri>model://calibration_plane2/meshes/calibration_plane.dae</uri>
+                        <uri>model://calibration_plane1/meshes/calibration_plane.dae</uri>
                     </mesh>
                 </geometry>
             </visual>
