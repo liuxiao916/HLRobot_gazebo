@@ -12,6 +12,7 @@
         <arg name="rviz" value="$(arg rviz)"/>
         <arg name="model" value="$(arg model)"/>
         <arg name="model_pose" value="$(arg model_pose)"/>
+        <arg name="world_name" value="$(find hlrobot_gazebo)/worlds/music.world" />
     </include>
 
 </launch>
