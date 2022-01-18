@@ -102,12 +102,17 @@ roslaunch hlrobot_gazebo play_music.launch
 
 ## Hand eye calibration
 Use this robot to get the data for hand eye calibration.
+```bash
+roslaunch hlrobot_gazebo bringup_calibration.launch
+```
 Use image_view to collect image.
 ```bash
 rosrun image_view image_view image:=/camera/image_raw
 ```
-
-
+Get pose
+```bash
+rosrun hlrobot_gazebo show_tf.py
+```
 
 
 ## Todo

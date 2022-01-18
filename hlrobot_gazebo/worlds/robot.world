@@ -86,10 +86,10 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='default'>
-      <sim_time>1551 900000000</sim_time>
-      <real_time>464 700057668</real_time>
-      <wall_time>1640773785 58109210</wall_time>
-      <iterations>199754</iterations>
+      <sim_time>1726 993000000</sim_time>
+      <real_time>181 741202088</real_time>
+      <wall_time>1642509316 569800630</wall_time>
+      <iterations>175093</iterations>
       <model name='calibration_plane'>
         <pose frame=''>1.5 0 1 3.14159 -1.57079 -3.14159</pose>
         <scale>1 1 1</scale>
@@ -120,6 +120,16 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
+      <model name='calibration_plane_clone'>
+        <pose frame=''>-1 0 1 3.14159 1.57079 3.14159</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-1 0 1 3.14159 1.57079 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
       <model name='ground_plane'>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <scale>1 1 1</scale>
@@ -136,7 +146,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose frame=''>-1.76139 6.16755 5.07966 0 0.590308 -1.24495</pose>
+        <pose frame=''>1.8302 3.47684 3.55001 0 0.606308 -1.90901</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
@@ -188,6 +198,22 @@
         <kinematic>0</kinematic>
       </link>
       <pose frame=''>0.117427 -1.75022 0 0 -0 0</pose>
+    </model>
+    <model name='calibration_plane_clone'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://calibration_plane2/meshes/calibration_plane.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>1.04008 -0.03884 1 3.14159 -1.57079 -3.14159</pose>
     </model>
   </world>
 </sdf>
