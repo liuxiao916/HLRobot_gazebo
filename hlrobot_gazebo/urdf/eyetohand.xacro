@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="HLRobot">
+    <xacro:property name="PI" value="3.1415926535897931"/>
+    <xacro:include filename="arm.xacro" />
+    <xacro:include filename="CameraSensor.xacro"/>
+    <xacro:Macro_CameraROS name="camera" parent="world" frame="camera_link" image_topic="image_raw" fov="1.396" hz="10" width="2560" height="1920">
+        <origin xyz="1.5 0 1" rpy="0 0 3.1415926" />
+    </xacro:Macro_CameraROS>
+
+    <link name="camera_projection_frame"/>
+
+    <joint name="camera_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="-1.5707 0 -1.5707" />
+        <parent link="camera_link" />
+        <child link="camera_projection_frame" />
+    </joint>
+
+    <link name="board">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hlrobot_gazebo/models/calibration_plane2/meshes/calibration_plane.dae" />
+            </geometry>
+        </visual>
+    </link>
+    <joint name="board_joint" type="fixed">
+        <origin xyz="0 0 0.2" rpy="0 0 0" />
+        <parent link="tool_frame" />
+        <child link="board" />
+    </joint>
+
+</robot>
+

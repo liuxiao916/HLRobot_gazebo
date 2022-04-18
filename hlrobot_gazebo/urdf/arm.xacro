@@ -38,7 +38,7 @@
         </collision>
     </link>
     <joint name="base_footprint2base_link" type="fixed">
-        <origin xyz="-0.03 0 0" rpy="0 0 -1.5707" />
+        <origin xyz="0 0 0" rpy="0 0 -1.5707" />
         <parent link="base_footprint" />
         <child link="base_link" />
     </joint>

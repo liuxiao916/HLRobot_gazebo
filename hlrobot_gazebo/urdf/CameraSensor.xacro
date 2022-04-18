@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Camera">
-    <xacro:property name="camera_size" value="0.08"/>
+    <xacro:property name="camera_size" value="0.02"/>
 
     <xacro:macro name="Macro_CameraROS" params="name parent frame image_topic hz *origin fov width height">
         <joint name="${name}_mount_joint" type="fixed">

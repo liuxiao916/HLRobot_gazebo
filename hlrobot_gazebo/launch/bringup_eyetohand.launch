@@ -1,0 +1,21 @@
+<launch>
+
+    <arg name="group_ns" default="/"/>
+    <arg name="with_moveit" default="true"/>
+    <arg name="rviz" default="false"/>
+    <arg name="model" default="$(find hlrobot_gazebo)/urdf/eyetohand.xacro"/>
+    <arg name="model_pose" default="-x 0 -y 0 -z 0.003"/>
+    <arg name="world_name" default="$(find hlrobot_gazebo)/worlds/eyetohand.world" />
+
+    <include file="$(find hlrobot_gazebo)/launch/hl_gazebo.launch">
+        <arg name="group_ns" value="$(arg group_ns)"/>
+        <arg name="with_moveit" value="$(arg with_moveit)"/>
+        <arg name="rviz" value="$(arg rviz)"/>
+        <arg name="model" value="$(arg model)"/>
+        <arg name="model_pose" value="$(arg model_pose)"/>
+        <arg name="world_name" value="$(arg world_name)"/>
+    </include>
+
+    <include file="$(find hlrobot_gazebo)/launch/hl_moveit.launch"/>
+
+</launch>

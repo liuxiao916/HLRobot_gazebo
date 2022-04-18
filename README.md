@@ -117,6 +117,7 @@ rosrun image_view image_view image:=/camera/image_raw
 - [x] Implement the forward and inverse kinematics in this simulation
 - [x] Simply control the robot by giving Cartesian coordinate
 - [x] Moveit!
+- [x] Hand eye calibration!
 - [ ] Anything useful 
 
 
