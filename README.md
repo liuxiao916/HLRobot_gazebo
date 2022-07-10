@@ -113,7 +113,8 @@ Get pose
 ```bash
 rosrun hlrobot_gazebo show_tf.py
 ```
-
+![eye in hand](hlrobot_gazebo/data/picture/eyeinhand.png)  
+![eye to hand](hlrobot_gazebo/data/picture/handeye.png)
 
 ## Todo
 - [x] load angle of joints from txt file to control the robot
