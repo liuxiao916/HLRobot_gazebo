@@ -1,6 +1,6 @@
 # HLRobot_gazebo
 A simulation for QKM HL6-0900 6DOF robot based on gazebo
-![robot](hlrobot_gazebo/data/picture/robot.png)
+![robot](hlrobot_gazebo/data/picture/robot_model.png)
 
 ## Demo
 [Demo Link](https://www.bilibili.com/video/BV1qL4y1p7Gr?p=4)
@@ -80,7 +80,7 @@ rosrun hlrobot_gazebo show_tf.py
 ```
 ### Compare the frame in simulation and reality
 
-![](hlrobot_gazebo/data/picture/Frame1.jpg)
+![](hlrobot_gazebo/data/picture/Frame1_real.jpg)
 ![](hlrobot_gazebo/data/picture/Frame1_Simulation.png)
 
 ## Load music book and play music
@@ -114,7 +114,7 @@ Get pose
 ```bash
 rosrun hlrobot_gazebo show_tf.py
 ```
-![eye in hand](hlrobot_gazebo/data/picture/eyeinhand.png)  
+![eye in hand](hlrobot_gazebo/data/picture/eye_in_hand.png)  
 ![eye to hand](hlrobot_gazebo/data/picture/handeye.png)
 
 ## Todo
