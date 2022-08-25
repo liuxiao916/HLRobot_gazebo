@@ -1,6 +1,8 @@
 # HLRobot_gazebo
 A simulation for QKM HL6-0900 6DOF robot based on gazebo
+
 ![robot](hlrobot_gazebo/data/picture/robot_model.png)
+
 
 ## Demo
 [Demo Link](https://www.bilibili.com/video/BV1qL4y1p7Gr?p=4)
@@ -80,8 +82,9 @@ rosrun hlrobot_gazebo show_tf.py
 ```
 ### Compare the frame in simulation and reality
 
-![](hlrobot_gazebo/data/picture/Frame1_real.jpg)
-![](hlrobot_gazebo/data/picture/Frame1_Simulation.png)
+![real](hlrobot_gazebo/data/picture/Frame1_real.jpg)
+
+![simulation](hlrobot_gazebo/data/picture/Frame1_Simulation.png)
 
 ## Load music book and play music
 **Edit the path of music book(PPB files) in `scripts/publisher.py `**  
